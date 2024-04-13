@@ -1,0 +1,38 @@
+
+
+npx shadcn-ui@latest init
+npx shadcn-ui@latest add
+
+# npm i @material-tailwind/react
+
+docker run --name next-eval-pg -e POSTGRES_PASSWORD=123456 -p 5432:5432 -d postgres
+    = tuto: https://www.youtube.com/watch?v=RdPYA-wDhTA
+
+docker volume create postgres_volume
+
+docker  volume ls
+
+docker run  --name next-eval-pg  -e POSTGRES_PASSWORD=123456  -p 5432:5432  -v postgres_volume:/var/lib/postgresql/data  -d postgres
+
+docker exec -it next-eval-pg psql -U postgres
+
+postgres=# create database demo_db; 
+
+docker compose up
+
+
+
+npm i drizzle-orm
+npm i -D drizzle-kit
+npm i postgres       // -D ?????
+
+maybe we should install pg
+    npm i pg 
+
+= generate then run migration
+npx drizzle-kit generate:pg
+npx tsx migrate.ts
+
+npm i pg
+npx drizzle-kit studio
+

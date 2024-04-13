@@ -1,0 +1,17 @@
+name: next-eval-app
+
+services:
+  eval-db:
+    image: postgres
+    restart: always
+    container_name: next-eval-pg
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 123456
+      # PGDATA: /data/postgres
+    volumes:
+      - eval-pg-vol:/var/lib/postgresql/data
+
+volumes:
+  eval-pg-vol:
