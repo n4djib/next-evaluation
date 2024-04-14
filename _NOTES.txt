@@ -5,6 +5,15 @@ npx shadcn-ui@latest add
 
 # npm i @material-tailwind/react
 
+
+
+
+== Cerbos Docker Container
+docker run --rm --name cerbos -p 3592:3592 ghcr.io/cerbos/cerbos:0.35.1
+
+
+
+== Postgres Docker Container
 docker run --name next-eval-pg -e POSTGRES_PASSWORD=123456 -p 5432:5432 -d postgres
     = tuto: https://www.youtube.com/watch?v=RdPYA-wDhTA
 
@@ -21,6 +30,7 @@ postgres=# create database demo_db;
 docker compose up
 
 
+== Drizzle and postgres
 
 npm i drizzle-orm
 npm i -D drizzle-kit
@@ -33,6 +43,19 @@ maybe we should install pg
 npx drizzle-kit generate:pg
 npx tsx migrate.ts
 
+if npx tsx migrate.ts has error and you want to drop the generated migration file, use:
+    npx drizzle-kit drop
+
+
 npm i pg
 npx drizzle-kit studio
+
+
+== Next-auth
+npm i next-auth
+
+npm i bcrypt
+npm i -D @types/bcrypt
+
+
 
