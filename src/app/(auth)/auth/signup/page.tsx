@@ -1,6 +1,6 @@
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import SignupForm from "@/components/SignupForm";
+// import { getServerSession } from "next-auth";
+// import { redirect } from "next/navigation";
+import SignupForm from "./SignupForm";
 // import { Link } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";

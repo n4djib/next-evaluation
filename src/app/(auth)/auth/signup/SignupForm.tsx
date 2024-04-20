@@ -3,12 +3,14 @@
 import { Button, Checkbox, Input } from "@nextui-org/react";
 import { UserRound, Mail, KeyRound, Eye, EyeOff, Phone } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { z } from "zod";
 import validator from "validator";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { passwordStrength } from "check-password-strength";
+import PassworStrength from "./PassworStrength";
 
 const FormSchema = z
   .object({
@@ -52,11 +54,18 @@ const SignupForm = () => {
     handleSubmit,
     reset,
     control,
+    watch,
     formState: { errors },
   } = useForm<InputType>({
     resolver: zodResolver(FormSchema),
   });
   const [isVisiblePass, setIsVisiblePass] = useState(false);
+  const [passStrength, setPassStrength] = useState(0);
+
+  useEffect(() => {
+    const strength = passwordStrength(watch().password).id;
+    setPassStrength(strength);
+  }, [watch().password]);
 
   const saveUser: SubmitHandler<InputType> = async (data) => {
     //
@@ -120,6 +129,7 @@ const SignupForm = () => {
         errorMessage={errors.password?.message}
         isInvalid={!!errors.password}
       />
+      <PassworStrength passStrength={passStrength} />
       <Input
         label="Confirm Password"
         {...register("confirmPassword")}
