@@ -12,16 +12,26 @@ npx shadcn-ui@latest add
 docker run --rm --name cerbos -p 3592:3592 ghcr.io/cerbos/cerbos:0.35.1
 
 
-
 == Postgres Docker Container
 docker run --name next-eval-pg -e POSTGRES_PASSWORD=123456 -p 5432:5432 -d postgres
+    
     = tuto: https://www.youtube.com/watch?v=RdPYA-wDhTA
+
 
 docker volume create postgres_volume
 
 docker  volume ls
 
 docker run  --name next-eval-pg  -e POSTGRES_PASSWORD=123456  -p 5432:5432  -v postgres_volume:/var/lib/postgresql/data  -d postgres
+
+    next-eval-pg
+    5432
+    next-eval-app_eval-pg-vol
+    /var/lib/postgresql/data
+    POSTGRES_PASSWORD
+    123456
+
+
 
 docker exec -it next-eval-pg psql -U postgres
 
@@ -34,10 +44,8 @@ docker compose up
 
 npm i drizzle-orm
 npm i -D drizzle-kit
-npm i postgres       // -D ?????
+npm i postgres
 
-maybe we should install pg
-    npm i pg 
 
 = generate then run migration
 npx drizzle-kit generate:pg
@@ -47,7 +55,7 @@ if npx tsx migrate.ts has error and you want to drop the generated migration fil
     npx drizzle-kit drop
 
 
-npm i pg
+npm i -D pg
 npx drizzle-kit studio
 
 
@@ -56,6 +64,43 @@ npm i next-auth
 
 npm i bcrypt
 npm i -D @types/bcrypt
+
+
+
+npm i  @nextui-org/react  framer-motion
+
+
+npm i react-hook-form
+npm i zod
+npm i @hookform/resolvers
+
+npm i validator
+npm i -D @types/validator
+
+
+
+
+
+
+===========================
+===========================
+- input field mask (phone, currency)
+- 
+- 
+- 
+- 
+- 
+
+
+===========================
+===========================
+
+import { Toaster } from "react-hot-toast";
+
+<body>
+    {children}
+    <Toaster />
+</body>
 
 
 

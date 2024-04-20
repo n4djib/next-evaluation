@@ -22,6 +22,20 @@
       "when": 1713107289599,
       "tag": "0002_majestic_sir_ram",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1713202232207,
+      "tag": "0003_sturdy_namor",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1713512334492,
+      "tag": "0004_lowly_whirlwind",
+      "breakpoints": true
     }
   ]
 }

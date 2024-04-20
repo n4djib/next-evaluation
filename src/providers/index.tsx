@@ -1,16 +1,19 @@
 "use client";
 
-import { ThemeProvider } from "@material-tailwind/react";
+import { NextUIProvider } from "@nextui-org/react";
+import AuthProvider from "./AuthProvider";
+import { Session } from "next-auth";
 
 type Props = {
   children: React.ReactNode;
+  serverSession: Session | null;
 };
 
-const ProvidersWrapper = ({ children }: Props) => {
+const ProvidersWrapper = ({ children, serverSession }: Props) => {
   return (
-    <>
-      <ThemeProvider>{children}</ThemeProvider>
-    </>
+    // <AuthProvider serverSession={serverSession}>
+    <NextUIProvider>{children}</NextUIProvider>
+    // </AuthProvider>
   );
 };
 
