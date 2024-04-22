@@ -20,12 +20,14 @@ export const authOptions: AuthOptions = {
       },
 
       async authorize(credentials, req) {
+        console.log("1-:", { credentials });
         if (!credentials?.username)
           throw new Error("Please Provide the Username");
         if (!credentials?.password)
           throw new Error("Please Provide the Password");
 
         const user = await getUser(credentials.username);
+        console.log("2-:", { user });
 
         if (!user) throw new Error("Username or Password is not correct. 1");
 

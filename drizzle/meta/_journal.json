@@ -36,6 +36,20 @@
       "when": 1713512334492,
       "tag": "0004_lowly_whirlwind",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1713625779012,
+      "tag": "0005_smart_vector",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1713712502020,
+      "tag": "0006_uneven_rafael_vega",
+      "breakpoints": true
     }
   ]
 }

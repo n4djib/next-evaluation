@@ -11,9 +11,9 @@ type Props = {
 
 const ProvidersWrapper = ({ children, serverSession }: Props) => {
   return (
-    // <AuthProvider serverSession={serverSession}>
-    <NextUIProvider>{children}</NextUIProvider>
-    // </AuthProvider>
+    <AuthProvider serverSession={serverSession}>
+      <NextUIProvider>{children}</NextUIProvider>
+    </AuthProvider>
   );
 };
 

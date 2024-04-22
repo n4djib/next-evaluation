@@ -79,18 +79,37 @@ npm i -D @types/validator
 
 npm i check-password-strength
 
+npm i react-toastify // didn't work
+npm i react-hot-toast
+
+
+
+
+
+
 
 
 
 ===========================
+======TO-DO
 ===========================
 - input field mask (phone, currency)
 - 
 - 
 - 
-- 
-- 
+===========================
+======BUGS
+===========================
+- in signUp if we change the schema.drizzle (change field name)
+    the optional fields are not caught when trying to create a new user
+    registerNewUser() server action
+    const newUser = { nn: "test", ...user };
 
+      const res = await registerNewUser({ nn: "test", ...user });
+      const res = await registerNewUser(newUser);
+      
+- 
+- 
 
 ===========================
 ===========================
@@ -101,6 +120,4 @@ import { Toaster } from "react-hot-toast";
     {children}
     <Toaster />
 </body>
-
-
 

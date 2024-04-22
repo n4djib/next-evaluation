@@ -1,10 +1,10 @@
+import SigninButton from "@/components/SigninButton";
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
   Link,
-  Button,
 } from "@nextui-org/react";
 
 const Appbar = () => {
@@ -30,12 +30,7 @@ const Appbar = () => {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="/auth/signin">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="/auth/signup" variant="flat">
-            Sign Up
-          </Button>
+          <SigninButton />
         </NavbarItem>
       </NavbarContent>
     </Navbar>
