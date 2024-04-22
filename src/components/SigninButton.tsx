@@ -6,6 +6,7 @@ import Link from "next/link";
 
 const SigninButton = () => {
   const { data: session } = useSession();
+  // const session = null;
 
   return (
     <div className="flex gap-2 items-center">
