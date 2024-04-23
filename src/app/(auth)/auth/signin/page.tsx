@@ -1,15 +1,30 @@
 import { getServerSession } from "next-auth";
+import Link from "next/link";
+import SigninForm from "./SigninForm";
 import { redirect } from "next/navigation";
+import { authOptions } from "@/lib/next-auth/authOptions";
 
-const page = async () => {
-  // const session = await getServerSession();
-  // console.log("LoginPage:", { session });
-
-  // if (session) {
-  //   // redirect("/");
-  // }
-
-  return <div>signin page s</div>;
+type Props = {
+  searchParams: {
+    callbackUrl?: string;
+  };
 };
 
-export default page;
+const SigninPage = async ({ searchParams }: Props) => {
+  console.log({ searchParams });
+  const session = await getServerSession(authOptions);
+  console.log("LoginPage:", { session });
+
+  if (session) {
+    redirect("/");
+  }
+
+  return (
+    <div className="flex items-center justify-center flex-col ">
+      <SigninForm callbackUrl={searchParams.callbackUrl} />
+      <Link href={"/auth/forgotPassword"}>Forgot Your Password?</Link>
+    </div>
+  );
+};
+
+export default SigninPage;

@@ -4,8 +4,8 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
 } from "@nextui-org/react";
+import Link from "next/link";
 
 const Appbar = () => {
   return (
@@ -17,11 +17,11 @@ const Appbar = () => {
         </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {/* <NavbarItem>
-          <Link color="foreground" href="/">
-            Home
+        <NavbarItem>
+          <Link color="foreground" href="/about">
+            About
           </Link>
-        </NavbarItem> */}
+        </NavbarItem>
         {/* <NavbarItem isActive>
           <Link href="#" aria-current="page">
             Customers

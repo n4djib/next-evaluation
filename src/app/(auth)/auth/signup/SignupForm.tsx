@@ -14,6 +14,7 @@ import PassworStrength from "./PassworStrength";
 import { registerNewUser } from "@/app/actions/authActions";
 // import { toast } from "react-toastify";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 // import { NewUser } from "@/lib/drizzle/schema";
 
 const FormSchema = z
@@ -76,7 +77,7 @@ const SignupForm = () => {
   const {
     register,
     handleSubmit,
-    reset,
+    // reset,
     control,
     watch,
     formState: { errors },
@@ -87,6 +88,7 @@ const SignupForm = () => {
 
   const [isVisiblePass, setIsVisiblePass] = useState(false);
   const [passStrength, setPassStrength] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     const strength = passwordStrength(watch().password).id;
@@ -102,6 +104,8 @@ const SignupForm = () => {
       const res = await registerNewUser(user);
       toast.success("The User registered successfully.");
       // reset();
+      toast.success("Wellcome, now you can Sign In");
+      router.push("/auth/signin");
     } catch (error) {
       console.log(error);
       // toast.error(error);
