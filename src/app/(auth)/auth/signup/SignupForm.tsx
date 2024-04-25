@@ -27,16 +27,6 @@ const FormSchema = z
         new RegExp("^[a-zA-Z0-9]+$"),
         "No special characters are allowed!"
       ),
-    firstName: z
-      .string()
-      .min(2, "First name must be at least 2 characters")
-      .max(45, "First name must be less than 45 characters")
-      .regex(new RegExp("^[a-zA-Z]+$"), "No special characters are allowed!"),
-    lastName: z
-      .string()
-      .min(2, "Last name must be at least 2 characters")
-      .max(45, "Last name must be less than 45 characters")
-      .regex(new RegExp("^[a-zA-Z]+$"), "No special characters are allowed!"),
     email: z.string().email("Please enter a valid email address"),
     phone: z.string().refine((val) => validator.isMobilePhone(val)),
     password: z
@@ -113,34 +103,21 @@ const SignupForm = () => {
   return (
     <form
       onSubmit={handleSubmit(saveUser)}
-      className="grid grid-cols-2 gap-3 p-2 shadow border rounded-md"
+      className="grid grid-cols-4 gap-3 p-2 shadow border rounded-md"
+      // className="gap-3 p-2 shadow border rounded-md"
     >
       <Input
         label="User Name"
         {...register("name")}
-        className="col-span-2"
+        className="col-span-4"
         startContent={<UserRound className="w-4" />}
         errorMessage={errors.name?.message}
         isInvalid={!!errors.name}
       />
       <Input
-        label="First Name"
-        {...register("firstName")}
-        startContent={<UserRound className="w-4" />}
-        errorMessage={errors.firstName?.message}
-        isInvalid={!!errors.firstName}
-      />
-      <Input
-        label="Last Name"
-        {...register("lastName")}
-        startContent={<UserRound className="w-4" />}
-        errorMessage={errors.lastName?.message}
-        isInvalid={!!errors.lastName}
-      />
-      <Input
         label="Email"
         {...register("email")}
-        className="col-span-2"
+        className="col-span-4"
         startContent={<Mail className="w-4" />}
         errorMessage={errors.email?.message}
         isInvalid={!!errors.email}
@@ -148,7 +125,7 @@ const SignupForm = () => {
       <Input
         label="Phone"
         {...register("phone")}
-        className="col-span-2"
+        className="col-span-4"
         startContent={<Phone className="w-4" />}
         errorMessage={errors.phone?.message}
         isInvalid={!!errors.phone}
@@ -156,7 +133,7 @@ const SignupForm = () => {
       <Input
         label="Password"
         {...register("password")}
-        className="col-span-2"
+        className="col-span-4"
         type={isVisiblePass ? "text" : "password"}
         startContent={<KeyRound className="w-4" />}
         endContent={
@@ -179,7 +156,7 @@ const SignupForm = () => {
       <Input
         label="Confirm Password"
         {...register("confirmPassword")}
-        className="col-span-2"
+        className="col-span-4"
         type={isVisiblePass ? "text" : "password"}
         startContent={<KeyRound className="w-4" />}
         endContent={
@@ -205,7 +182,7 @@ const SignupForm = () => {
           <Checkbox
             onChange={field.onChange}
             onBlur={field.onBlur}
-            className="col-span-2"
+            className="col-span-4"
           >
             I accept the{" "}
             <Link className="text-blue-500" href="#">

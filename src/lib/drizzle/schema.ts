@@ -19,8 +19,6 @@ export const users = pgTable(
       .default(sql`gen_random_uuid()`),
     // id: text("id").primaryKey().$defaultFn(() => randomUUID()),
     name: text("name").notNull().unique(),
-    firstName: text("firstName"),
-    lastName: text("lastName"),
     email: text("email").notNull().unique(),
     password: text("password").notNull(),
     emailVerified: timestamp("emailVerified", { mode: "date" }),
