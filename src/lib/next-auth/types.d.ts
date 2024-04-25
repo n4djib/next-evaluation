@@ -1,4 +1,4 @@
-import { User } from "../drizzle/schema";
+import { User } from "@/lib/drizzle/schema";
 
 declare module "next-auth" {
   interface Session {

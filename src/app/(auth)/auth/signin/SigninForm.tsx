@@ -46,6 +46,7 @@ const SigninForm = ({ callbackUrl }: Props) => {
 
     if (result && !result?.ok) {
       toast.error(result?.error);
+      return;
     }
 
     toast.success("Wellcome to Next-Evaluaion");

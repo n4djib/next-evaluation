@@ -97,10 +97,8 @@ const SignupForm = () => {
 
   const saveUser: SubmitHandler<InputType> = async (data) => {
     const { accepted, confirmPassword, ...user } = data;
-    // const newUser: NewUser = { nn: "test", ...user };
 
     try {
-      // const res = await registerNewUser(newUser);
       const res = await registerNewUser(user);
       toast.success("The User registered successfully.");
       // reset();

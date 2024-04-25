@@ -82,8 +82,13 @@ npm i check-password-strength
 npm i react-toastify // didn't work
 npm i react-hot-toast
 
+npm i nodemailer
+npm i -D @types/nodemailer
 
 
+
+npm i jsonwebtoken
+npm i -D @types/jsonwebtoken
 
 
 

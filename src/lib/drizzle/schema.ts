@@ -17,6 +17,7 @@ export const users = pgTable(
       .notNull()
       .primaryKey()
       .default(sql`gen_random_uuid()`),
+    // id: text("id").primaryKey().$defaultFn(() => randomUUID()),
     name: text("name").notNull().unique(),
     firstName: text("firstName"),
     lastName: text("lastName"),
@@ -25,13 +26,13 @@ export const users = pgTable(
     emailVerified: timestamp("emailVerified", { mode: "date" }),
     image: text("image"),
     phone: text("Phone"),
-    createsAt: timestamp("createdAt").defaultNow().notNull(),
-  },
-  (users) => {
-    return {
-      uniqueIdx: uniqueIndex("unique_idx").on(users.email),
-    };
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
   }
+  // , (users) => {
+  //   return {
+  //     uniqueIdx: uniqueIndex("unique_email_idx").on(users.email),
+  //   };
+  // }
 );
 
 export type User = typeof users.$inferSelect;

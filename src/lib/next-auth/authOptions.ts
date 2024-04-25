@@ -1,9 +1,14 @@
 import type { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { getUser } from "../drizzle/users";
-import { compare } from "bcrypt";
 import { User } from "../drizzle/schema";
-import { getCurrentTime } from "../utils";
+import { getUser } from "@/lib/drizzle/users";
+import { compare } from "bcrypt";
+
+// const ret = await sendMail({
+//   to: "n4djib@gmail.com",
+//   subject: "test",
+//   body: "test1",
+// });
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -41,6 +46,10 @@ export const authOptions: AuthOptions = {
           throw new Error("Username or Password is not correct. 2");
         }
 
+        if (!user.emailVerified) {
+          throw new Error("Account not activated, check your Email");
+        }
+
         const { password, ...userWitoutPassword } = user;
 
         // return userWitoutPassword;
@@ -49,22 +58,18 @@ export const authOptions: AuthOptions = {
     }),
   ],
 
-  secret: process.env.AUTH_SECRET,
-
   // session: {
   //   strategy: "jwt",
   // },
 
+  secret: process.env.AUTH_SECRET,
+  pages: { signIn: "/auth/signin" },
   callbacks: {
     async jwt({ token, user, account, profile }) {
       // the "user" is returned from CredentialsProvider at login
-
-      // var time = getCurrentTime()
-      // console.log("--Jwt callback--", time);
-      // console.log({ token, user, account, profile });
-
       if (user) {
-        // the type is User: why it is ok without password and an added roles field?
+        // the type is User: why it is ok without password
+        // and an added roles field?
         token.user = user as User;
       }
       return token;
@@ -72,13 +77,6 @@ export const authOptions: AuthOptions = {
 
     async session({ session, token, user }) {
       session.user = token.user;
-
-      var time = getCurrentTime();
-      console.log("--Session callback--", time);
-      console.log({ session, token, user });
-      // console.log("user from token::::", token.user);
-      console.log("\n");
-
       return session;
     },
 
@@ -87,8 +85,6 @@ export const authOptions: AuthOptions = {
     // },
   },
 
-  pages: { signIn: "/auth/signin" },
-
   events: {},
-  debug: true,
+  // debug: true,
 };

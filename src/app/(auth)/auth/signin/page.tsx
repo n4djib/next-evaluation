@@ -11,9 +11,9 @@ type Props = {
 };
 
 const SigninPage = async ({ searchParams }: Props) => {
-  console.log({ searchParams });
+  // console.log({ searchParams });
   const session = await getServerSession(authOptions);
-  console.log("LoginPage:", { session });
+  // console.log("LoginPage:", { session });
 
   if (session) {
     redirect("/");
