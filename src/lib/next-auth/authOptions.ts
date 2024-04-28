@@ -32,7 +32,11 @@ export const authOptions: AuthOptions = {
         if (!credentials?.password)
           throw new Error("Please Provide the Password");
 
-        const user = await getUser(credentials.username);
+        const user = await getUser({
+          field: "name",
+          value: credentials.username,
+        });
+
         if (!user) {
           throw new Error("Username or Password is not correct. 1");
         }

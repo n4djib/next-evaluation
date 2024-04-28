@@ -9,7 +9,7 @@ type SignOption = {
 };
 
 const DEFAULT_SIGN_OPTION: SignOption = {
-  expiresIn: "5m",
+  expiresIn: "30m",
 };
 
 export function signJwt(

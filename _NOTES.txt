@@ -79,7 +79,7 @@ npm i -D @types/validator
 
 npm i check-password-strength
 
-npm i react-toastify // didn't work
+npm i react-toastify    // didn't work
 npm i react-hot-toast
 
 npm i nodemailer
@@ -91,20 +91,25 @@ npm i jsonwebtoken
 npm i -D @types/jsonwebtoken
 
 
+npm i handlebars
 
 
 
 
-===========================
-======TO-DO
-===========================
+
+=================
+===== TO-DO =====
+=================
 - input field mask (phone, currency)
+- upload images
+- you should use uuid+db rather jwt
+    because the jwt is not expired after use
 - 
 - 
 - 
-===========================
-======BUGS
-===========================
+================
+===== BUGS =====
+================
 - in signUp if we change the schema.drizzle (change field name)
     the optional fields are not caught when trying to create a new user
     registerNewUser() server action
@@ -113,16 +118,28 @@ npm i -D @types/jsonwebtoken
       const res = await registerNewUser({ nn: "test", ...user });
       const res = await registerNewUser(newUser);
       
+- Import trace for requested module:
+    ./node_modules/handlebars/lib/index.js
+    require.extensions is not supported by webpack. Use a loader instead
+    FIX:
+    "browser": "dist/handlebars.js",
+    to handlebars' package.json solved this for me.
+    RESULT: didn't work
+- can't a hacker see the token in the url and use it to reset the password?
+    i better store the tokens in the database and remove them after use
+- 
 - 
 - 
 
 ===========================
 ===========================
 
-import { Toaster } from "react-hot-toast";
+// todo-tree.general.tags settings
+// TODO
+// FIXME
+// BUG
+// HACK
+// XXX
+// [x]
 
-<body>
-    {children}
-    <Toaster />
-</body>
 

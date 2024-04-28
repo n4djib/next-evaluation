@@ -10,8 +10,8 @@ import validator from "validator";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { passwordStrength } from "check-password-strength";
-import PassworStrength from "./PassworStrength";
-import { registerNewUser } from "@/app/actions/authActions";
+import PassworStrength from "../../../../components/PassworStrength";
+import { registerNewUserAction } from "@/app/actions/authActions";
 // import { toast } from "react-toastify";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -50,7 +50,6 @@ const FormSchema = z
   })
   .refine(
     async (data) => {
-      console.log("refining email");
       const res = await fetch("http://localhost:3000/api/auth/emails");
       const { data: emails } = await res.json();
       return !emails.includes(data.email);
@@ -70,7 +69,7 @@ const SignupForm = () => {
     // reset,
     control,
     watch,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<InputType>({
     resolver: zodResolver(FormSchema),
     // mode: "onChange",
@@ -89,7 +88,7 @@ const SignupForm = () => {
     const { accepted, confirmPassword, ...user } = data;
 
     try {
-      const res = await registerNewUser(user);
+      const res = await registerNewUserAction(user);
       toast.success("The User registered successfully.");
       // reset();
       toast.success("Wellcome, now you can Sign In");
@@ -195,8 +194,14 @@ const SignupForm = () => {
         <p className="text-red-500">{errors.accepted.message}</p>
       )}
       <div className="flex justify-center col-span-2">
-        <Button color="primary" type="submit" className="w-48">
-          Submit
+        <Button
+          className="w-48"
+          type="submit"
+          isLoading={isSubmitting}
+          disabled={isSubmitting}
+          color="primary"
+        >
+          {isSubmitting ? "Please wait" : "Submit"}
         </Button>
       </div>
     </form>

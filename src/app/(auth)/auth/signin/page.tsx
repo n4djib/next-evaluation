@@ -11,9 +11,7 @@ type Props = {
 };
 
 const SigninPage = async ({ searchParams }: Props) => {
-  // console.log({ searchParams });
   const session = await getServerSession(authOptions);
-  // console.log("LoginPage:", { session });
 
   if (session) {
     redirect("/");
@@ -22,7 +20,7 @@ const SigninPage = async ({ searchParams }: Props) => {
   return (
     <div className="flex items-center justify-center flex-col ">
       <SigninForm callbackUrl={searchParams.callbackUrl} />
-      <Link href={"/auth/forgotPassword"}>Forgot Your Password?</Link>
+      <Link href={"/auth/forgot-password"}>Forgot Your Password?</Link>
     </div>
   );
 };

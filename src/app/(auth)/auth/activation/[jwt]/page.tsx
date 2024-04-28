@@ -1,4 +1,4 @@
-import { activateUser } from "@/app/actions/authActions";
+import { activateUserAction } from "@/app/actions/authActions";
 
 type Props = {
   params: {
@@ -7,8 +7,7 @@ type Props = {
 };
 
 const ActivationPage = async ({ params }: Props) => {
-  const result = await activateUser(params.jwt);
-  console.log("--activate page---", result);
+  const result = await activateUserAction(params.jwt);
 
   return (
     <div className="p-2">

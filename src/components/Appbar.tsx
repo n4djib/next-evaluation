@@ -1,39 +1,26 @@
 import SigninButton from "@/components/SigninButton";
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-} from "@nextui-org/react";
 import Link from "next/link";
 
 const Appbar = () => {
   return (
-    <Navbar isBordered>
-      <NavbarBrand>
+    <nav className="border-b-2 p-1 flex justify-between items-center">
+      <div>
         <Link color="foreground" href="/">
-          {/* <AcmeLogo /> */}
-          <p className="font-bold text-inherit">NEXT-EVAL</p>
+          <p className="font-bold text-inherit p-é text-xl ml-1">NEXT-EVAL</p>
         </Link>
-      </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="/about">
-            About
-          </Link>
-        </NavbarItem>
-        {/* <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
-          </Link>
-        </NavbarItem> */}
-      </NavbarContent>
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <SigninButton />
-        </NavbarItem>
-      </NavbarContent>
-    </Navbar>
+      </div>
+      <div className="flex gap-3">
+        <Link color="foreground" href="/profile">
+          Profile
+        </Link>
+        <Link color="foreground" href="/about">
+          About
+        </Link>
+      </div>
+      <div>
+        <SigninButton />
+      </div>
+    </nav>
   );
 };
 

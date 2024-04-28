@@ -9,10 +9,12 @@ const layout = async ({ children }: { children: React.ReactNode }) => {
   // const serverSession = await getServerSession();
 
   return (
-    <ProvidersWrapper serverSession={serverSession}>
-      <Appbar />
-      {children}
-    </ProvidersWrapper>
+    <>
+      <ProvidersWrapper serverSession={serverSession}>
+        <Appbar />
+        <div className="p-2">{children}</div>
+      </ProvidersWrapper>
+    </>
   );
 };
 

@@ -1,45 +1,35 @@
-"use client";
+// "use client";
 
-import { Button } from "@nextui-org/react";
-import { signIn, useSession } from "next-auth/react";
+// import { Button } from "@nextui-org/react";
+// import { useSession } from "next-auth/react";
+import { authOptions } from "@/lib/next-auth/authOptions";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
 
-const SigninButton = () => {
-  const { data: session } = useSession();
+const SigninButton = async () => {
+  // const { data: session } = useSession();
+  // TODO: dedup getServerSession
+  const session = await getServerSession(authOptions);
   // const session = null;
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-3 items-center">
       {session && session.user ? (
         <>
-          <p>{session.user.name}</p>{" "}
-          <Link
-            href="/api/auth/signout"
-            className="text-sky-500 hover:text-sky-600"
-          >
+          <p>{session.user.name}</p>
+          <Link href="/api/auth/signout" className="">
             Sign Out
           </Link>
         </>
       ) : (
-        <>
-          {/* <Button
-            as={Link}
-            href="/auth/signin"
-            className="text-sky-500 hover:text-sky-600"
-          >
+        <div className="flex gap-3">
+          <Link href="/auth/signin" className="">
             Sign In
-          </Button> */}
-          <Button
-            onClick={() => signIn()}
-            className="text-sky-500 hover:text-sky-600"
-          >
-            Sign In
-          </Button>
-
-          <Button as={Link} color="primary" href="/auth/signup" variant="flat">
+          </Link>
+          <Link color="primary" href="/auth/signup">
             Sign Up
-          </Button>
-        </>
+          </Link>
+        </div>
       )}
     </div>
   );

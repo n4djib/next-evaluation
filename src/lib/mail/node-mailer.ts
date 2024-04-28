@@ -1,5 +1,4 @@
 import nodemailer from "nodemailer";
-import { getCurrentTime } from "../utils";
 
 type MailProps = {
   to: string;
@@ -8,7 +7,7 @@ type MailProps = {
 };
 
 export async function sendMail({ to, subject, body }: MailProps) {
-  const { SMTP_EMAIL, SMTP_NAME, SMTP_PASS } = process.env;
+  const { SMTP_EMAIL, APP_NAME, SMTP_PASS } = process.env;
 
   const transport = nodemailer.createTransport({
     service: "gmail",
@@ -20,13 +19,12 @@ export async function sendMail({ to, subject, body }: MailProps) {
 
   // try {
   //   const testResult = await transport.verify();
-  //   // console.log("--Test result of transport", testResult);
   // } catch (error) {
   //   console.log({ error });
   // }
 
   var mailOptions = {
-    from: `${SMTP_NAME} <${SMTP_EMAIL}>`,
+    from: `${APP_NAME} <${SMTP_EMAIL}>`,
     to,
     subject,
     html: body,
@@ -34,7 +32,6 @@ export async function sendMail({ to, subject, body }: MailProps) {
 
   try {
     const sendResult = await transport.sendMail(mailOptions);
-    // console.log("--send---", sendResult.accepted);
     return sendResult;
   } catch (error) {
     console.log({ error });

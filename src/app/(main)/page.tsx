@@ -1,20 +1,25 @@
-import { Button } from "@nextui-org/react";
+// import { getUser, getUsers } from "@/lib/drizzle/users";
 
 export default async function Home() {
+  // const user = await getUser({
+  //   field: "id",
+  //   value: "e39e5b65-5bbc-4d5b-bf19-9185f0e26ec6",
+  // });
+
+  // const user = await getUser({
+  //   field: "email",
+  //   value: "n4djib@gmail.com",
+  // });
+  // const user = await getUser({ field: "name", value: "n4djib" });
+  // console.log(user);
+
   // const users = await getUsers();
+  // console.log(users);
 
   return (
-    <div className="p-1 gap-1">
+    <div className="">
       hello, world
-      {/* <div>{JSON.stringify(users)}</div> */}
-      {/* <div className="flex flex-wrap gap-4 items-center">
-        <Button color="default">Default</Button>
-        <Button color="primary">Primary</Button>
-        <Button color="secondary">Secondary</Button>
-        <Button color="success">Success</Button>
-        <Button color="warning">Warning</Button>
-        <Button color="danger">Danger</Button>
-      </div> */}
+      <br />
     </div>
   );
 }
