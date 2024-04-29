@@ -12,6 +12,15 @@ npx shadcn-ui@latest add
 docker run --rm --name cerbos -p 3592:3592 ghcr.io/cerbos/cerbos:0.35.1
 
 
+
+==== some tests on docker compose
+docker compose up -d
+docker-compose down --volumes
+    this deletes all the volumes creted by compose
+
+
+
+
 == Postgres Docker Container
 docker run --name next-eval-pg -e POSTGRES_PASSWORD=123456 -p 5432:5432 -d postgres
     
@@ -141,5 +150,8 @@ npm i handlebars
 // HACK
 // XXX
 // [x]
+
+== minio
+docker run -d -p 9000:9000 -p 9001:9001 --name minio1 -v c:\minio\data:/data -e "MINIO_ROOT_USER=ROOTUSER" -e "MINIO_ROOT_PASSWORD=CHANGEME123" quay.io/minio/minio server /data --console-address ":9001"
 
 

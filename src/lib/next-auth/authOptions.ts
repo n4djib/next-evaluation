@@ -1,6 +1,6 @@
 import type { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { User } from "../drizzle/schema";
+import { User } from "@/lib/drizzle/schema";
 import { getUser } from "@/lib/drizzle/users";
 import { compare } from "bcrypt";
 
@@ -66,7 +66,7 @@ export const authOptions: AuthOptions = {
   //   strategy: "jwt",
   // },
 
-  secret: process.env.AUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   pages: { signIn: "/auth/signin" },
   callbacks: {
     async jwt({ token, user, account, profile }) {
@@ -74,7 +74,10 @@ export const authOptions: AuthOptions = {
       if (user) {
         // the type is User: why it is ok without password
         // and an added roles field?
-        token.user = user as User;
+        //
+        // FIXME: remove roles type after adding it in schema
+        // token.user = user as User;
+        token.user = user as User & { roles: string[] };
       }
       return token;
     },

@@ -12,6 +12,11 @@ type GetUserProp = {
 // value: string | Date
 // TODO: can we relate Date to "emailVerified" | "createdAt"
 
+// type GetUserProp2 = { id: string } | { age: number };
+// const aaaaaaa: GetUserProp2 = {
+//   age: 88,
+// };
+
 export const getUser = async ({ field, value }: GetUserProp) => {
   // return await db.query.users.findFirst({
   //   where: (users, { eq }) => eq(users[field], value),

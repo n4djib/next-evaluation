@@ -2,7 +2,7 @@ declare namespace NodeJS {
   export interface ProcessEnv {
     APP_NAME: string;
     DATABASE_URL: string;
-    AUTH_SECRET: string;
+    NEXTAUTH_SECRET: string;
     SMTP_EMAIL: string;
     SMTP_PASS: string;
     NEXT_PUBLIC_BASE_URL: string;

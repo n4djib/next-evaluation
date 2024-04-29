@@ -1,10 +1,9 @@
 name: next-eval-app
-
 services:
   eval-db:
     image: postgres
     restart: always
-    container_name: next-eval-pg
+    container_name: next-eval-pg-2
     ports:
       - 5432:5432
     environment:
@@ -13,5 +12,20 @@ services:
     volumes:
       - eval-pg-vol:/var/lib/postgresql/data
 
+  cerbos:
+    image: ghcr.io/cerbos/cerbos:0.35.1
+    restart: always
+    container_name: cerbos-2
+    ports:
+      - 3592:3592
+    volumes:
+      - cerbos-cache:/.cache
+      - cerbos-policies:/policies
+      - cerbos-tmp:/tmp
+
 volumes:
   eval-pg-vol:
+
+  cerbos-cache:
+  cerbos-policies:
+  cerbos-tmp:
